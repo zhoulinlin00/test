@@ -1,6 +1,9 @@
  --Data Model
+
 Step 1. Data exploration and seperate the array column - in RewardItemDetails
+
 Step 2. Create the data model as PDF
+
 
 One-to-Many Relationships: As you know, there are one-to-many relationships between the tables:
 ---- A single receipt can have multiple items (represented in RewardItemDetails), so ensuring that receipt_id and barcode are correct and unique is crucial.
