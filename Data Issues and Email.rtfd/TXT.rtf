@@ -1,0 +1,181 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\fswiss\fcharset0 Arial-BoldMT;\f2\fmodern\fcharset0 Courier;
+\f3\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red26\green26\blue26;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c13333\c13333\c13333;\cssrgb\c100000\c100000\c100000;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{hyphen\}}{\leveltext\leveltemplateid101\'01\uc0\u8259 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid102\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid201\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{circle\}}{\leveltext\leveltemplateid202\'01\uc0\u9702 ;}{\levelnumbers;}\fi-360\li1440\lin1440 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl300\sa200\partightenfactor0
+
+\f0\fs20 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 1. Receipt Table\cb1 \uc0\u8232 \cb3 Issues:\cb1 \uc0\u8232 \cb3 1. Dupes in `user_id`:\'a0\cb1 \uc0\u8232 \cb3 \'a0\'a0 - Identify duplicate `user_id` entries and determine if they are valid (e.g., same user scanning multiple receipts).\'a0\cb1 \uc0\u8232 \cb3 \'a0\'a0 - If invalid, remove duplicates or merge records if necessary.\cb1 \
+\cb3 2. Invalid `receipt_id`:\cb1 \uc0\u8232 \cb3 \'a0\'a0 - Validate `receipt_id` format (e.g., length, characters, uniqueness).\'a0\cb1 \uc0\u8232 \cb3 \'a0\'a0 - Remove or flag invalid entries.\cb1 \
+\cb3 3. Invalid `bonusPointsEarned`:\cb1 \uc0\u8232 \cb3 \'a0\'a0 - Ensure `bonusPointsEarned` is a non-negative number.\'a0\cb1 \uc0\u8232 \cb3 \'a0\'a0 - Replace invalid values with defaults (e.g., 0) or remove the record.\cb1 \
+\cb3 4. Invalid or null `createdDate`/`dateScanned`:\cb1 \uc0\u8232 \cb3 \'a0\'a0 - Validate date formats and ensure they fall within a reasonable range (e.g., not future dates).\'a0\cb1 \uc0\u8232 \cb3 \'a0\'a0 - For null values, impute based on other data (e.g., use `dateScanned` if `createdDate` is null) or remove the record.\cb1 \
+\cb3 5. Invalid `rewardStatus` values:\cb1 \uc0\u8232 \cb3 \'a0\'a0 - Define valid values for `rewardStatus` (e.g., "Finished", "Pending").\'a0\cb1 \uc0\u8232 \cb3 \'a0\'a0 - Replace invalid values with a default (e.g., "Unknown") or remove the record.\cb1 \
+\cb3 6. Invalid `totalSpent`:\cb1 \uc0\u8232 \cb3 \'a0\'a0 - Ensure `totalSpent` is a non-negative number.\'a0\cb1 \uc0\u8232 \cb3 \'a0\'a0 - Replace invalid values with defaults (e.g., 0) or remove the record.\cb1 \
+\cb3 ---\cb1 \
+\cb3 2. Brand Table\cb1 \uc0\u8232 \cb3 Issues:\cb1 \uc0\u8232 \cb3 1. Dupes in `barcode` but different `category`:\cb1 \uc0\u8232 \cb3 \'a0\'a0 - Investigate if the same barcode is associated with multiple categories.\'a0\cb1 \uc0\u8232 \cb3 \'a0\'a0 - Resolve conflicts by updating the category or flagging the record for review.\cb1 \
+\cb3 2. Missing spellings in `CPG` column (e.g., "Cogs"/"Cpgs"):\cb1 \uc0\u8232 \cb3 \'a0\'a0 - Standardize the `CPG` column values (e.g., "CPG").\'a0\cb1 \uc0\u8232 \cb3 \'a0\'a0 - Use string matching or regex to correct misspellings.\cb1 \
+\cb3 3. Null in `category` or `categoryCode`:\cb1 \uc0\u8232 \cb3 \'a0\'a0 - Impute missing values based on other data (e.g., use the most common category for the brand).\'a0\cb1 \uc0\u8232 \cb3 \'a0\'a0 - If no data is available, flag the record for review.\cb1 \
+\cb3 4. Invalid or null `names` (e.g., "test. brand"):\cb1 \uc0\u8232 \cb3 \'a0\'a0 - Remove or flag records with invalid or placeholder names.\'a0\cb1 \uc0\u8232 \cb3 \'a0\'a0 - Standardize brand names (e.g., trim whitespace, capitalize correctly).\cb1 \
+\cb3 5. Null in `topBrand` column:\'a0\cb1 \uc0\u8232 \cb3 \'a0\'a0 - Impute missing values based on brand popularity or other metrics.\'a0\cb1 \uc0\u8232 \cb3 \'a0\'a0 - If no data is available, set a default value (e.g., "False").\cb1 \
+\cb3 6. Invalid or null `brandCode` (e.g., "TEST BRANDCODE @1612366146051")\cb1 \uc0\u8232 \cb3 \'a0\'a0 - Validate `brandCode` format (e.g., length, characters).\'a0\cb1 \uc0\u8232 \cb3 \'a0\'a0 - Replace invalid or placeholder values with a standardized code or remove the record.\cb1 \
+\cb3 ---\cb1 \
+\cb3 3. User Table\cb1 \uc0\u8232 \cb3 Issues:\cb1 \uc0\u8232 \cb3 1. Dupes in `user_id`:\cb1 \uc0\u8232 \cb3 \'a0\'a0 - Identify duplicate `user_id` entries.\'a0\cb1 \uc0\u8232 \cb3 \'a0\'a0 - Merge records if they represent the same user or remove duplicates if invalid.\cb1 \
+\cb3 ---\cb1 \
+\cb3 4. Reward Item Details (Separated from `rewardsReceiptItemList`)\cb1 \uc0\u8232 \cb3 Issues:\cb1 \uc0\u8232 \cb3 1. Nulls in multiple columns (`needsFetchReview`, `PartnerItemId`):\cb1 \uc0\u8232 \cb3 \'a0\'a0 - Impute missing values based on other data (e.g., set `needsFetchReview` to "False" if no data is available).\'a0\cb1 \uc0\u8232 \cb3 \'a0\'a0 - Flag records with critical missing data for review.\cb1 \
+\cb3 2. Missing `barcode` (e.g., `originalReceiptItemText: "PEPSI COLA"`):\cb1 \uc0\u8232 \cb3 \'a0\'a0 - Use `originalReceiptItemText` to infer or lookup the `barcode`.\'a0\cb1 \uc0\u8232 \cb3 \'a0\'a0 - If no `barcode` can be determined, flag the record for review.\cb1 \
+\cb3 ---\cb1 \
+\pard\pardeftab720\sa280\partightenfactor0
+\cf2 \cb3 Key Data Relationships and Implications:
+\f1\b \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0
+\f0\b0 \cf2 One-to-Many Relationships: As you know, there are one-to-many relationships between the tables:\
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls2\ilvl1\cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 	- \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 A single\'a0receipt\'a0can have multiple items (represented in\'a0
+\f2 RewardItemDetails
+\f0 ), so ensuring that\'a0
+\f2 receipt_id
+\f0 \'a0and\'a0
+\f2 barcode
+\f0 \'a0are correct and unique is crucial.\cb1 \
+\ls2\ilvl1\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 	- \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 A\'a0user\'a0can scan many receipts over time, which means we need to ensure accurate linking of users to receipts.\cb1 \
+\ls2\ilvl1\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 	- \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 A\'a0barcode\'a0may appear across multiple items in different receipts, so ensuring the\'a0
+\f2 barcode
+\f0 \'a0in the\'a0
+\f2 Brand
+\f0 \'a0table is unique and correctly categorized is essential for accurate brand performance tracking.\cb1 \
+\pard\pardeftab720\sl300\sa200\partightenfactor0
+\cf2 \cb3 ---\cb1 \
+\pard\pardeftab720\sa280\partightenfactor0
+\cf2 \cb3 Next Steps:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa200\partightenfactor0
+\ls3\ilvl0\cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	1.	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Clean Up the Invalid Data:\cb1 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls3\ilvl1\cf2 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Validate and standardize\'a0
+\f2 user_id
+\f0 \'a0and\'a0
+\f2 receipt_id
+\f0 \'a0formats.\cb1 \
+\ls3\ilvl1\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Fix invalid\'a0
+\f2 totalSpent
+\f0 ,\'a0
+\f2 bonusPointsEarned
+\f0 , and\'a0
+\f2 rewardReceiptStatus
+\f0 \'a0values.\cb1 \
+\ls3\ilvl1\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Address missing and invalid dates (
+\f2 createDate
+\f0 ,\'a0
+\f2 dateScanned
+\f0 ) to ensure proper event tracking.\cb1 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa200\partightenfactor0
+\ls3\ilvl0
+\f1\b \cf2 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	2.	}
+\f0\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Fix Duplicate and Inconsistent Data:\cb1 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls3\ilvl1\cf2 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Resolve duplicates in the\'a0
+\f2 barcode
+\f0 \'a0column in the\'a0
+\f2 Brand
+\f0 \'a0table and ensure consistent category assignments.\cb1 \
+\ls3\ilvl1\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Clean up null or invalid\'a0
+\f2 brandName
+\f0 ,\'a0
+\f2 category
+\f0 , and\'a0
+\f2 categoryCode
+\f0 \'a0fields in the\'a0
+\f2 Brand
+\f0 \'a0table.\cb1 \
+\ls3\ilvl1\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 De-duplicate\'a0
+\f2 user_id
+\f0 \'a0entries in the\'a0
+\f1\b User
+\f0\b0 \'a0table.\cb1 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa200\partightenfactor0
+\ls3\ilvl0
+\f1\b \cf2 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	3
+\f0\b0 .	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Data Normalization and Enrichment:\cb1 \
+\pard\tx940\tx1440\pardeftab720\li1440\fi-1440\partightenfactor0
+\ls3\ilvl1\cf2 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Ensure that all\'a0
+\f2 barcode
+\f0 \'a0values are present in the\'a0
+\f2 RewardItemDetails
+\f0 \'a0table and are properly linked to the correct brand.\cb1 \
+\ls3\ilvl1\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u9702 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Fill missing values in critical fields like\'a0
+\f2 needsFetchReview
+\f0 \'a0and\'a0
+\f2 partnerItemId
+\f0 \'a0in\'a0
+\f2 RewardItemDetails
+\f0 .\cb1 \
+\pard\pardeftab720\sa100\partightenfactor0
+\cf2 \cb3 \
+\pard\pardeftab720\sa280\partightenfactor0
+\ls4\ilvl0\cf2 Performance and Scaling Concerns:
+\f1\b \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa200\partightenfactor0
+\ls4\ilvl0\cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}
+\f0\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Volume of Data: As we scale, the volume of records will increase. Ensuring that our data validation and cleaning processes are efficient will be critical to avoid bottlenecks, especially during monthly reporting cycles.\cb1 \uc0\u8232 \
+\ls4\ilvl0
+\f1\b \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}
+\f0\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Query Performance: Queries that join large tables like\'a0
+\f2 Receipts
+\f0 \'a0and\'a0
+\f2 RewardItemDetails
+\f0 \'a0may become slower as the data grows. We\'92ll need to consider optimizing these queries with proper indexing or denormalization strategies to ensure consistent performance.\cb1 \uc0\u8232 \
+\ls4\ilvl0
+\f1\b \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}
+\f0\b0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Data Consistency in Production: Implementing a more rigorous data validation pipeline (e.g., via ETL processes) will help catch these issues early in production and prevent them from affecting live reporting.\cb1 \uc0\u8232 \
+\pard\tx720\pardeftab720\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sl300\sa200\partightenfactor0
+\cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\f3 \cf2 \
+Emails to Business:\
+\
+\pard\pardeftab720\sl300\sa200\partightenfactor0
+
+\f0 \cf2 \
+\cb3 Data Quality Issues Identified \'96 Action Needed\'a0\cb1 \
+\cb3 Hi - Name of Business User,\cb1 \
+\cb3 I hope this message finds you well. As part of our ongoing efforts to ensure the accuracy and reliability of our data, I\'92ve conducted a thorough review of the datasets we\'92re working with. I\'92ve identified several data quality issues that need to be addressed to ensure our analyses and business decisions are based on clean, consistent, and trustworthy data.\'a0\cb1 \
+\cb3 Here\'92s a high-level summary of the issues:\'a0\cb1 \
+\cb3 1. Receipt Table\cb1 \uc0\u8232 \cb3 - Duplicate User IDs: Some users appear multiple times, which could skew user-level metrics.\'a0\cb1 \uc0\u8232 \cb3 - Invalid Receipt IDs: Some receipt IDs don\'92t match the expected format or are missing.\'a0\cb1 \uc0\u8232 \cb3 - Invalid Bonus Points Earned: Some entries have negative or nonsensical values.\'a0\cb1 \uc0\u8232 \cb3 - Invalid or Missing Dates: Some `createdDate` or `dateScanned` values are either invalid or null.\'a0\cb1 \uc0\u8232 \cb3 - Invalid Reward Status: Some entries have unexpected values in the `rewardStatus` field.\'a0\cb1 \uc0\u8232 \cb3 - Invalid Total Spent: Some values are negative or unrealistic.\'a0\cb1 \
+\cb3 2. Brand Table\cb1 \uc0\u8232 \cb3 - Duplicate Barcodes with Different Categories: The same barcode is associated with multiple categories, causing inconsistencies.\'a0\cb1 \uc0\u8232 \cb3 - Misspelled CPG Column: Variations like "Cogs" or "Cpgs" need standardization.\'a0\cb1 \uc0\u8232 \cb3 - Missing or Invalid Category Data: Some entries have null or invalid `category` or `categoryCode` values.\'a0\cb1 \uc0\u8232 \cb3 - Invalid or Null Brand Names: Placeholder names like "test. brand" need to be cleaned.\'a0\cb1 \uc0\u8232 \cb3 - Missing Top Brand Flags: Some entries have null values in the `topBrand` column.\'a0\cb1 \uc0\u8232 \cb3 - Invalid Brand Codes: Some codes are placeholders (e.g., "TEST BRANDCODE @1612366146051").\'a0\cb1 \
+\cb3 3. User Table\cb1 \uc0\u8232 \cb3 - Duplicate User IDs: Some users appear multiple times, which could lead to inaccurate user counts.\'a0\cb1 \
+\cb3 4. Reward Item Details\cb1 \uc0\u8232 \cb3 - Missing Barcodes: Some items don\'92t have barcodes, relying only on text descriptions (e.g., "PEPSI COLA").\'a0\cb1 \uc0\u8232 \cb3 - Null Values in Key Columns:** Columns like `needsFetchReview` and `PartnerItemId` have missing data.\'a0\cb1 \
+\cb3 \
+Questions for the Team\cb1 \uc0\u8232 \cb3 To resolve these issues effectively, I need your input on the following:\'a0\cb1 \uc0\u8232 \cb3 1. Are there specific business rules or thresholds for validating fields like `bonusPointsEarned`, `totalSpent`, or `rewardStatus`?\'a0\cb1 \uc0\u8232 \cb3 2. How should we handle duplicate barcodes with conflicting categories? Should we prioritize one category or flag them for manual review?\'a0\cb1 \uc0\u8232 \cb3 3. For missing or invalid brand names, should we remove these records or attempt to infer the correct names?\'a0\cb1 \uc0\u8232 \cb3 4. Are there any known issues or edge cases in the data collection process that could explain some of these anomalies?\'a0\cb1 \
+\cb3 ---\cb1 \
+\cb3 Next Steps\cb1 \uc0\u8232 \cb3 1. Data Cleaning: I\'92ll start cleaning the data based on the above issues, using standardized rules and imputing missing values where possible.\'a0\cb1 \uc0\u8232 \cb3 2. Validation Rules: I\'92ll define and document validation rules to prevent similar issues in the future.\'a0\cb1 \uc0\u8232 \cb3 3. Automated Checks: I\'92ll implement automated data quality checks to flag issues as new data comes in.\'a0\cb1 \
+\cb3 ---\cb1 \
+\cb3 Other Questions:\cb1 \uc0\u8232 \cb3 As we move toward production, we\'92ll need to address:\'a0\cb1 \uc0\u8232 \cb3 - Data Volume:With more users and receipts, we\'92ll need efficient indexing and partitioning strategies to handle large datasets.\'a0Is this monthly file or weekly file or daily file?\cb1 \uc0\u8232 \cb3 - Validation: Can someone in the business team help to validate the rules file?\cb1 \uc0\u8232 \
+}
